@@ -1,3 +1,6 @@
+import Css exposing (..)
+import Html.Styled exposing (..)
+import Html.Styled.Attributes exposing (css)
 import Slides exposing (..)
 
 
@@ -27,7 +30,7 @@ main = Slides.app
 
     , mdFragments
         [ """
-            ## No!
+            # No!
             _Elm is about..._
           """
         , "* Writing reliable web applications"
@@ -37,7 +40,7 @@ main = Slides.app
         ]
     
     , mdFragments
-        [ "# How does Elm ccomplish this?"
+        [ "# How does Elm accomplish this?"
         , "* No runtime excetions"
         , "* Type inference and extensible type system"
         , "* Friendly, helpful compiler"
@@ -82,33 +85,36 @@ main = Slides.app
         ```
         """
 
-    , md
-        """
-        ```
-        Backslashes always start escaped characters, but I do not recognize this one:
+    , Slides.html <|
+        div [ css [ fontSize (px 25), whiteSpace preLine ]] [
+            p []
+                [ text
+                    """
+                    Backslashes always start escaped characters, but I do not recognize this one:
 
-        47|             |> List.filter (\\e -> e.distance < 500)
-                                        ^
-        Maybe there is some typo?
+                    47|             |> List.filter (\\e -> e.distance < 500)
 
-        Hint: Valid escape characters include:
+                    Maybe there is some typo?
 
-            \\n
-            \\r
-            \\t
-            \\\"
-            \\\'
-            \\\\
-            \\u{03BB}
+                    Hint: Valid escape characters include:
 
-        The last one lets encode ANY character by its Unicode code point, so use that
-        for anything outside the ordinary six.
-        ```
-        """
+                        \\n
+                        \\r
+                        \\t
+                        \\\"
+                        \\\'
+                        \\\\
+                        \\u{03BB}
+
+                    The last one lets encode ANY character by its Unicode code point, so use that
+                    for anything outside the ordinary six.
+                    """
+                ]
+        ]
     
     , md
         """
-        # Introducing: Pipelines
+        # Elm Syntax: Pipelines
 
         ```elm
         filterEvents : List Events -> List String
